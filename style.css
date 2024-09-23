@@ -531,4 +531,8 @@ li {
 .awards_head {
   font-size:32px;
 }
+.awards_item {
+    
+    padding: 30px 0px 30px 0px;
+}
 }
