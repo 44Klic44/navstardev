@@ -1,196 +1,276 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>ONEROMAN — автофотограф</title>
+    <meta
+      name="description"
+      content="ONEROMAN — автофотограф. Дрифт, тюнинг, ночные съёмки, мотоспорт."
+    />
+    <meta name="theme-color" content="#050505" />
+    <meta property="og:title" content="ONEROMAN — автофотограф" />
+    <link rel="icon" href="assets/favicon.ico" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="./fonts/stylesheet.css">
-  <title></title>
+    <!-- Шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Unbounded:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
 
-</head>
-
-<body>
-
-  <header class="header  ">
-
-    <div class="nav container">
-      <a href="" class="nav_logo">
-        <img src="./img/LOGO.svg" alt="" class="logo">
+    <!-- Все стили сайта -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- ШАПКА: логотип и кнопка меню -->
+    <header class="site-header" id="site-header">
+      <a class="site-header__logo" href="#top" aria-label="ONEROMAN — наверх">
+        <img src="assets/logo.svg" alt="ONEROMAN" />
       </a>
-      <div class="nav_menu">
-        <a href="" class="nav_contact">СВЯЗАТЬСЯ</a>
-        <div class="nav_menuBtn"><img src="./img/menu button.svg" alt=""></div>
-      </div>
-    </div>
+      <button
+        class="menu-toggle"
+        id="menu-toggle"
+        type="button"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+      >
+        <span></span><span></span>
+      </button>
+    </header>
 
-    <div class="container">
-      <h1 class="heading">NASTARTWEB</h1>
+    <!-- МЕНЮ на весь экран -->
+    <nav class="fullscreen-menu" aria-label="Главное меню">
+      <a class="fullscreen-menu__link" id="menu-about-link" href="#about"
+        >Обо мне</a
+      >
+      <a class="fullscreen-menu__link" href="#works">Работы</a>
+      <a class="fullscreen-menu__link" href="#services">Услуги</a>
+      <a class="fullscreen-menu__link" href="#contact">Контакты</a>
+      <span class="caption">@one_poman · @stanse_srt</span>
+    </nav>
 
-      <div class="text_desc">
-        <h2 class="title">powerful test Digital&nbsp;Agency</h2>
-
-        <div class="description">
-
-          <p class="desc_itemo">что и&nbsp;как делаем</p>
-
-          <p class="desc_item">текст рыба рыба&nbsp;тест&nbsp;текст рыба текст&nbsp;рыба&nbsp;тест и&nbsp;крутые кейсы</p>
-
+    <main id="top">
+      <!-- ПЕРВЫЙ ЭКРАН: фото и большой логотип -->
+      <section class="hero">
+        <picture>
+          <source
+            media="(max-width: 820px)"
+            srcset=""
+            id="hero-source-mobile"
+          />
+          <img
+            class="hero__photo"
+            id="hero-photo"
+            alt="Автомобиль, съёмка ONEROMAN"
+            fetchpriority="high"
+          />
+        </picture>
+        <div class="hero__content" id="hero-content">
+          <img
+            class="hero__logo"
+            src="assets/logo.svg"
+            alt="ONEROMAN — автофотограф"
+          />
+          <p class="caption">Автофотограф · дрифт · тюнинг · ночь</p>
         </div>
-
-      </div>
-      <div id="aside1">
-        <div class="screen">
-          <video autoplay loop muted class="pcvideo">
-
-            <source src="./img/case.mp4" type="video/mp4"></source>
-          </video>
+        <div class="hero__hint caption">
+          <span>Автофотограф</span><span>Scroll ↓</span>
         </div>
-      </div>
+      </section>
 
-    </div>
-
-    <div class="bgvideo">
-      <video autoplay loop muted>
-
-        <source src="./img/bg.mp4" type="video/mp4"></source>
-      </video>
-    </div>
-
-  </header>
-
-  <section class="info container">
-    <div class="info_back">
-
-    </div>
-    <div class="info_descrip">
-      <div class="info_desc"> The world moves fast, we keep pace. Cut through the noise with our process.</div>
-    </div>
-
-    <div class="info_text">
-
-      <p class="info_complex">комплексные возможности проектирования</з>
-
-        <div class="info-power_mobile">
-          <p class="info_powerful">мощный дуэт, движимый дизайном</p>
-
+      <!-- ОБО МНЕ: видео на фоне и текст, который проявляется при скролле.
+         Блок скрыт, пока в js/site-data.js не указано видео. -->
+      <section class="about-video" id="about" hidden>
+        <video
+          class="about-video__player"
+          id="about-video"
+          muted
+          loop
+          playsinline
+          preload="none"
+          aria-hidden="true"
+        ></video>
+        <div class="about-video__inner">
+          <span class="caption">Фотограф</span>
+          <h2 class="section-title" data-split-text>Обо мне</h2>
+          <p class="about-video__text" id="about-text"></p>
         </div>
+      </section>
 
+      <!-- КАТАЛОГ РАБОТ (карточки создаёт js/main.js из списка в js/site-data.js) -->
+      <section class="section" id="works">
+        <div class="section__inner">
+          <div class="section__head">
+            <h2 class="section-title" data-split-text>Избранные работы</h2>
+            <span class="caption reveal" id="works-count"></span>
+          </div>
+          <div class="works-grid" id="works-grid"></div>
+        </div>
+      </section>
+
+      <!-- УСЛУГИ -->
+      <section class="section" id="services">
+        <div class="section__inner">
+          <div class="section__head">
+            <h2 class="section-title" data-split-text>Что снимаю</h2>
+          </div>
+          <div id="services-list"></div>
+        </div>
+      </section>
+
+      <!-- КОНТАКТЫ И ЗАЯВКА -->
+      <section class="section contact" id="contact">
+        <div class="section__inner">
+          <span class="caption reveal">Контакты</span>
+          <h2 class="contact__title" data-split-text>Снимем твою тачку?</h2>
+
+          <div class="contact__columns">
+            <div class="contact-links reveal">
+              <a href="https://t.me/stanse_srt" target="_blank" rel="noopener"
+                ><span class="caption">Telegram</span
+                ><span>@stanse_srt</span></a
+              >
+              <a
+                href="https://vk.com/id874592050"
+                target="_blank"
+                rel="noopener"
+                ><span class="caption">ВКонтакте</span
+                ><span>vk.com/id874592050</span></a
+              >
+              <a
+                href="https://www.instagram.com/one_poman/"
+                target="_blank"
+                rel="noopener"
+                ><span class="caption">Instagram</span
+                ><span>@one_poman</span></a
+              >
+              <a href="tel:+79140769917"
+                ><span class="caption">Телефон</span
+                ><span>8 914 076-99-17</span></a
+              >
+              <a href="mailto:stance_srt@mail.ru"
+                ><span class="caption">Почта</span
+                ><span>stance_srt@mail.ru</span></a
+              >
+            </div>
+
+            <form class="request-form reveal" id="request-form" novalidate>
+              <h3 class="request-form__title">Оставить заявку</h3>
+              <p class="request-form__hint">
+                Заполните три поля, и я свяжусь с вами.
+              </p>
+
+              <div class="request-form__field">
+                <label for="field-name">Имя</label>
+                <input
+                  id="field-name"
+                  name="name"
+                  placeholder="Как к вам обращаться"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+              <div class="request-form__field">
+                <label for="field-contact">Как связаться</label>
+                <input
+                  id="field-contact"
+                  name="contact"
+                  placeholder="Telegram, телефон или почта"
+                  autocomplete="off"
+                  required
+                />
+              </div>
+              <div class="request-form__field">
+                <label for="field-message">Что снимаем</label>
+                <textarea
+                  id="field-message"
+                  name="message"
+                  placeholder="Машина, дата, место, пожелания"
+                  required
+                ></textarea>
+              </div>
+
+              <!-- Скрытое поле-ловушка для спам-ботов: людям его не видно -->
+              <input
+                class="request-form__trap"
+                type="text"
+                name="_gotcha"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+              />
+
+              <button class="button" id="request-submit" type="submit">
+                Отправить заявку →
+              </button>
+              <p
+                class="request-form__status"
+                id="request-status"
+                role="status"
+                aria-live="polite"
+              ></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <img src="assets/logo.svg" alt="ONEROMAN" />
+      <span class="caption">© 2026 ONEROMAN</span>
+    </footer>
+
+    <!-- СТРАНИЦА РАБОТЫ (наполняется скриптом при открытии работы) -->
+    <div
+      class="project-page"
+      id="project-page"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Работа"
+    ></div>
+
+    <!-- ПРОСМОТР ФОТО НА ВЕСЬ ЭКРАН -->
+    <div
+      class="lightbox"
+      id="lightbox"
+      role="dialog"
+      aria-label="Просмотр фото"
+    >
+      <span class="lightbox__counter caption" id="lightbox-counter"></span>
+      <button
+        class="lightbox__button lightbox__close"
+        id="lightbox-close"
+        type="button"
+        aria-label="Закрыть"
+      >
+        ✕
+      </button>
+      <button
+        class="lightbox__button lightbox__arrow lightbox__arrow--prev"
+        id="lightbox-prev"
+        type="button"
+        aria-label="Назад"
+      >
+        ←
+      </button>
+      <img class="lightbox__image" id="lightbox-image" alt="" />
+      <button
+        class="lightbox__button lightbox__arrow lightbox__arrow--next"
+        id="lightbox-next"
+        type="button"
+        aria-label="Вперёд"
+      >
+        →
+      </button>
     </div>
 
-  </section>
-
-  <section class="awards ">
-    <div class="awards_body container">
-      <div class="awards_head">
-        наши НАГРАДЫ
-      </div>
-
-      <ul class="awards_list">
-        <li class="awards_item ">
-
-          <div class="awards_company">nastart.dev</div>
-
-          <div class="hidden-block">
-          </div>
-
-          <div class="awards_desc">
-            <div class="awards_name">Madeontilda</div>
-            <div class="awards_mobile">
-              <div class="awards_date">08.11.2023</div>
-              <img class="awards_img" src="./img/Arrow_Up_Right_MD.svg" alt="">
-
-            </div>
-          </div>
-        </li>
-        <hr class="awards_line">
-        <li class="awards_item">
-
-          <div class="awards_company">nastart.dev</div>
-          <div class="hidden-block">
-          </div>
-          <div class="awards_desc">
-            <div class="awards_name">awwwards // Honor Mention</div>
-            <div class="awards_mobile">
-              <div class="awards_date">08.11.2023</div>
-              <img class="awards_img" src="./img/Arrow_Up_Right_MD.svg" alt="">
-            </div>
-          </div>
-        </li>
-        <hr class="awards_line">
-
-        <li class="awards_item">
-
-          <div class="awards_company">nastart.dev</div>
-          <div class="hidden-block">
-          </div>
-          <div class="awards_desc">
-            <div class="awards_name">dprofile // лучшее</div>
-            <div class="awards_mobile">
-              <div class="awards_date">08.11.2023</div>
-              <img class="awards_img" src="./img/Arrow_Up_Right_MD.svg" alt="">
-            </div>
-          </div>
-        </li>
-        <hr class="awards_line">
-
-        <li class="awards_item">
-
-          <div class="awards_company">nastart.dev</div>
-          <div class="hidden-block">
-          </div>
-          <div class="awards_desc">
-            <div class="awards_name">dprofile // брендинг</div>
-            <div class="awards_mobile">
-              <div class="awards_date">08.11.2023</div>
-              <img class="awards_img" src="./img/Arrow_Up_Right_MD.svg" alt="">
-            </div>
-          </div>
-        </li>
-        <hr class="awards_line">
-
-        <li class="awards_item">
-
-          <div class="awards_company">nastart.dev</div>
-          <div class="hidden-block">
-          </div>
-          <div class="awards_desc">
-            <div class="awards_name">dprofile // интерфейсы</div>
-            <div class="awards_mobile">
-              <div class="awards_date">08.11.2023</div>
-              <img class="awards_img" src="./img/Arrow_Up_Right_MD.svg" alt="">
-            </div>
-          </div>
-        </li>
-        <hr class="awards_line">
-
-        <li class="awards_item">
-
-          <div class="awards_company">nastart.dev</div>
-          <div class="hidden-block">
-          </div>
-          <div class="awards_desc">
-            <div class="awards_name">CSSDA // UI&nbsp;Design Award</div>
-            <div class="awards_mobile">
-              <div class="awards_date">08.11.2023</div>
-              <img class="awards_img" src="./img/Arrow_Up_Right_MD.svg" alt="">
-            </div>
-          </div>
-        </li>
-
-      </ul>
-
-    </div>
-
-  </section>
-
-
-
-
-  
-  <footer></footer>
-
-  <script src="script.js"></script>
-</body>
-
+    <!-- Сначала данные (их вы редактируете), потом логика -->
+    <script src="js/site-data.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
