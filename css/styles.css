@@ -307,7 +307,7 @@ body::after {
   height: 100%;
   object-fit: cover;
   filter: brightness(0.8);
-  animation: hero-zoom 14s var(--ease-smooth) both;
+  animation: hero-zoom 20s var(--ease-smooth) both;
 }
 
 @media (max-width: 820px) {
