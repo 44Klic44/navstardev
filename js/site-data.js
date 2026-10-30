@@ -86,7 +86,8 @@ const works = [
   }),
 
   createWork({
-    title: "TSUNAMI PICNIK",
+    title: "TSUNAMI PICNIC", 
+
     category: "Автофестиваль",
     year: "2026",
     description: "Автовыставка и дрифт",
